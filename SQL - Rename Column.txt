@@ -1,0 +1,1 @@
+ALTER TABLE StudentInfo RENAME COLUMN name TO FirstName;

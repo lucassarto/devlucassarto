@@ -1,0 +1,7 @@
+Library para o cluster: tabula-py
+
+import tabula as tb
+
+
+df = tb.read_pdf(f"/dbfs//mnt/MEU_PEDF.pdf", pages="1",area=[[120,0,1000,1000]])[0]
+df

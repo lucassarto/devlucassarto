@@ -1,0 +1,17 @@
+dir = "dbfs:/mnt/emails/silver/Close_UP/Produto/"
+dir_paths = dbutils.fs.ls(dir)
+list = spark.createDataFrame(dir_paths)
+list = list.select('name').collect()
+list = list.filter(col('name').rlike(fileRegex)).drop('path').drop('size').drop('modificationTime').orderBy(col('name').desc())
+list
+
+
+
+from pyspark.sql.functions import *
+dir = "dbfs:/mnt/Lake/Transitorio/"
+fileRegex = 'Drafts_'
+dir_paths = dbutils.fs.ls(dir)
+list = spark.createDataFrame(dir_paths)
+list = list.filter(col('name').rlike(fileRegex)).drop('path').drop('size').drop('modificationTime').orderBy(col('name').asc())
+list = list.select('name').collect()
+listS

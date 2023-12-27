@@ -1,0 +1,22 @@
+/*
+Primeiro, é necessário criar o registro de aplicativo no portal do azure para autenticação no Blob
+Depois salvar o Secret no Keyvault
+Conceder acesso ao APP como contributor na Storage Account
+Registrar o Escopo. URL de exemplo: https://adb-8948odo19119jd80752daiajda5748817.17.azuredatabricks.net/?o=8948807525748817#secrets/createScope
+/*
+
+
+dbutils.fs.unmount("/mnt/emails")
+
+configs = {"fs.azure.account.auth.type": "OAuth",
+          "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
+          "fs.azure.account.oauth2.client.id": "<Id do APP Registration>",
+          "fs.azure.account.oauth2.client.secret": dbutils.secrets.get(scope="<Escopo criado no Databrciks para o Keyvault>",key="<Nome da Chave que contem o client secret no Keyvault>"),
+          "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<Tenant ID>/oauth2/token"}
+
+
+dbutils.fs.mount(
+  source = "abfss://emails@seudominio.dfs.core.windows.net",
+  mount_point = "/mnt/emails",
+  extra_configs = configs
+)

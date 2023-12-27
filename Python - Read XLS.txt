@@ -1,0 +1,3 @@
+DeParapanilha1 = pd.read_excel("/dbfs//mnt/filedirectory/planilha1.xlsx", sheet_name = "plan1")
+
+DeParapanilha1 = pd.read_excel("/dbfs//mnt/filedirectory/planilha1.xlsx", sheet_name = "plan1")

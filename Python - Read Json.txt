@@ -1,0 +1,5 @@
+import json
+
+with open('/dbfs/mnt/Lake/MINHA_CAMADA_DE_DADOS/MEU_EXEMPLO.json', 'r') as f:
+    data = f.read()   
+    jsonObject = json.loads(data)

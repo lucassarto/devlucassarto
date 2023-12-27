@@ -1,0 +1,1 @@
+spark.sql("set spark.sql.legacy.timeParserPolicy=LEGACY")

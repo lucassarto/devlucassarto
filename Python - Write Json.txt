@@ -1,0 +1,5 @@
+import json
+
+#Cria um arquivo e salva com o conteudo json
+File = open("/dbfs//mnt/datalakehouse/Lake/Transitorio/" + str(FileName), "w")
+json.dump(JsonData, File)

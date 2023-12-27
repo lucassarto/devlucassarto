@@ -1,0 +1,9 @@
+%sql
+
+DROP TABLE IF EXISTS Schema_name.table_name;
+CREATE TABLE Schema_name.table_name
+(
+obs STRING
+)
+USING DELTA
+LOCATION 'dbfs:/mnt/yourDirectory';

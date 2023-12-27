@@ -1,0 +1,4 @@
+csv = spark.sql("select * from tb_name")
+csv = spark.sql("select * from tb_name") \
+    .toPandas() \
+    .to_csv("/dbfs//mnt/arquivo_test.csv",index_label="idx", encoding="utf-8", quotechar='"', sep=';')

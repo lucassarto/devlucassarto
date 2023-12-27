@@ -1,0 +1,7 @@
+import json
+
+JsonData = dbutils.widgets.get("JsonData")
+FileName = dbutils.widgets.get("FileName")
+
+with open("/dbfs//mnt/Lake/Transitorio/" + str(FileName) + ".json", "w") as File:
+    File.write(JsonData)

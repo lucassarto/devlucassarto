@@ -1,0 +1,1 @@
+df[['one', 'two', 'three']] = df[['one', 'two', 'three']].astype(str)

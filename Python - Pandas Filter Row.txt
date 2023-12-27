@@ -1,0 +1,2 @@
+Produto = Produto[Produto['desc_produto'].str.contains('ovo',case=False)]
+Produto = Produto[Produto['status_workflow_desc'].str.contains('entreg',case=False)]

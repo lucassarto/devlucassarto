@@ -1,0 +1,2 @@
+df = spark.sql('DESCRIBE HISTORY hive_metastore.SCHEMA.TABLE_NAME' )
+df.createOrReplaceTempView('tb_tmp')

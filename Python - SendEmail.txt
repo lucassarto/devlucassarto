@@ -1,0 +1,31 @@
+import smtplib
+from pathlib import Path
+from email.mime.multipart import MIMEMultipart
+from email.mime.base import MIMEBase
+from email.mime.text import MIMEText
+from email.utils import COMMASPACE, formatdate
+from email import encoders
+
+from_email = "thisisnotmyemail@dot.com"
+to_email = "thisisnotmyemail@dot.com"
+
+
+def send_mail(send_from = from_email, send_to = to_email, subject = "Test", message = "Test", files=[""],
+              server="smtp-mail.outlook.com", port=587, username='youradressemail@dot.com', password='OwYeahThisIsNotMyPassword',
+              use_tls=True):
+
+    msg = MIMEMultipart()
+    msg['From'] = send_from
+    msg['To'] = send_to
+    msg['Date'] = formatdate(localtime=True)
+    msg['Subject'] = subject
+
+    msg.attach(MIMEText(message))
+
+
+    smtp = smtplib.SMTP(server, port)
+    if use_tls:
+        smtp.starttls()
+    smtp.login(username, password)
+    smtp.sendmail(send_from, send_to, msg.as_string())
+    smtp.quit()
